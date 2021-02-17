@@ -12,9 +12,9 @@ def pipeline(frame):
     trick = trickness(filtered)
     reduced = cube_reduction(filtered)
     satur = saturation(reduced) 
-    #cv2.imwrite('t.png', trick)
+    #cv2.imwrite('t.png', satur)
     #exit(0)
-    return filtered
+    return satur
 
 
 def __init__(video_path):
