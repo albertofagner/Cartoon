@@ -14,3 +14,12 @@ Após clonar este repositório, intalar os requisitos contidos no requirements.t
 pip install -r requirements.txt
 ```
 
+## Cartunizando um vídeo
+Para aplicar a cartunização a um vídeo basta chamar o script de cartunização passando
+como parâmetro o caminho para o vídeo.
+
+```
+python cartoon.py my_video.mp4
+```
+
+O vídeo resultante será colocado dentro da pasta output.
