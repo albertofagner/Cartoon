@@ -9,7 +9,7 @@ python3 -m venv env
 source env/bin/activate
 ```
 
-Após clonar este repositório, intalar os requisitos contidos no requirements.txt
+Após clonar este repositório, instalar os requisitos contidos no requirements.txt
 ```
 pip install -r requirements.txt
 ```
