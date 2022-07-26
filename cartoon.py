@@ -1,5 +1,7 @@
 import cv2
 import sys
+import numpy as np
+import os
 
 from filtering import filter
 from color_reduction import cube_reduction
@@ -11,10 +13,12 @@ def pipeline(frame):
     filtered = filter(frame)
     trick = trickness(filtered)
     reduced = cube_reduction(filtered)
-    satur = saturation(reduced) 
-    #cv2.imwrite('t.png', satur)
-    #exit(0)
-    return satur
+    satur = saturation(reduced)
+
+    result = np.copy(satur)
+    result[np.where(trick==255)] = [0,0,0]
+
+    return result
 
 
 def __init__(video_path):
@@ -29,10 +33,13 @@ def __init__(video_path):
     size = (int(width), int(height))
     fps = cap.get(cv2.CAP_PROP_FPS)
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
+    if not os.path.exists('output'):
+        os.makedirs('output')
     out = cv2.VideoWriter('output/output.mp4', fourcc, fps, size)
 
     while True:
-        ret, frame = cap.read()
+        _, frame = cap.read()
         
         if frame is None:
             break
